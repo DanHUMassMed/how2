@@ -10,13 +10,13 @@ class FriendlyArgumentParser(argparse.ArgumentParser):
         self.print_help(sys.stderr)
         print(f"\n❌ ERROR: {message}\n", file=sys.stderr)
         print("💡 Example usage:", file=sys.stderr)
-        print("   python -m how <your question on a command line tool>\n", file=sys.stderr)
+        print("   how2 <your question on a command line tool>\n", file=sys.stderr)
         sys.exit(2)
 
 
 def main():
     parser = FriendlyArgumentParser(
-        description="Ask how to do anything at the command line."
+        description="Ask how2 to do anything at the command line."
     )
     parser.add_argument(
         "--env",
@@ -32,12 +32,12 @@ def main():
     parser.add_argument(
         "--set-llm",
         metavar="MODEL",
-        help="Set the Ollama model for how",
+        help="Set the Ollama model for how2",
     )
     parser.add_argument(
         "question",
         nargs="*",
-        help="Command-line question (e.g., 'how do I zip a file?')",
+        help="Command-line question (e.g., 'how2 how do I zip a file?')",
     )
 
     args = parser.parse_args()

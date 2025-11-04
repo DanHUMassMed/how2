@@ -28,3 +28,5 @@ venv/
 # Others you might want to ignore
 *.log
 *.tmp
+
+mlruns/

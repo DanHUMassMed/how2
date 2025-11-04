@@ -30,7 +30,7 @@ def mac_notify(title, message, sound="Ping"):
 
     
 def list_available_tools() -> str:
-    tools = [t for t in ["git","curl", "wget", "python", "pip", "brew", "zip", "unzip","npm","node","docker","java","mvn","gradle"] if shutil.which(t)]
+    tools = [t for t in ["git","curl", "wget", "awk","sed","python", "pip", "brew", "zip", "unzip","npm","node","docker","java","mvn","gradle"] if shutil.which(t)]
     return ", ".join(tools)
 
 
