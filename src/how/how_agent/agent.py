@@ -10,50 +10,16 @@ from pathlib import Path
 from how.utils.os_utils import get_git_repo, list_available_tools, Spinner, list_files
 from how.utils.config_utils import config
 import logging
-
+import how.constants as const
 
 logger = logging.getLogger(__name__)
-PROMPT = """SYSTEM:
-You are an expert, concise shell assistant. Your goal is to provide accurate, executable shell commands.
-
-CONTEXT:
--   **OS:** {current_os}
--   **Shell:** {shell}
--   **CWD:** {current_dir}
--   **User:** {current_user}
--   **Git Repo:** {git_repo}
--   **Files (top 20):** {files}
--   **Available Tools:** {tools}
-
-RULES:
-1.  **Primary Goal:** Generate the response JSON with the exact, executable shell command(s) for the `{shell}` environment.
-   **Response Format Example:** {{ "type": "command", "content": "zip archive.zip file.txt" }}
-
-2.  **Context is Key:** Use the CONTEXT (CWD, Files, OS, Tools) to write commands that are correct and specific.
-
-3.  **No Banter:** Do NOT include greetings, sign-offs, or conversational filler.
-
-4.  **Safety:** If a command is complex or destructive (e.g., `rm -rf`, `find -delete`), add a short comment explaining what it does.
-   **Response Format Example:** {{ "type": "command", "content": "rm -rf temp/", "comment": "Deletes the temp directory and all its contents" }}
-
-5.  **Questions:** If the user asks a general question (e.g., "what is `ls`?"), provide a concise, one-line answer.
-   **Response Format Example:** {{ "type": "question", "content": "Lists files and directories in the current directory." }}
-
-6.  **Ambiguity:** If the request is unclear, ask a single, direct clarifying question.
-   **Response Format Example:** {{ "type": "question", "content": "Which file or directory would you like to zip?" }}
-
-REQUEST:
-{question}
-
-RESPONSE:
-"""
 
     
 # -----------------------------
 # Fill prompt function
 # -----------------------------
 def fill_prompt(question: str) -> str:
-    return PROMPT.format(
+    return const.PROMPT.format(
         current_os=f"{platform.system()} {platform.release()}",
         shell=os.environ.get("SHELL", "unknown"),
         current_dir=os.getcwd(),
@@ -102,7 +68,7 @@ def parse_response(response):
     try:
         data = json.loads(response)
     except json.JSONDecodeError:
-        print("❌ Failed to parse response as JSON.")
+        print(f"❌ {'Response:':>11} Failed to parse response as JSON.")
         return None
     
     resp_type = data.get("type")
@@ -110,14 +76,14 @@ def parse_response(response):
     comment = data.get("comment", None)
 
     if resp_type == "question":
-        print(f"💡 Answer: {content}")
+        print(f"💡 {'Answer:':>11} {content}")
     elif resp_type == "command":
         cmd = content
         if comment:
-            print(f"⚠️ Comment: {comment}")
-        print(f"💻 Command: {cmd}")
+            print(f"💬 {'Comment:':>11} {comment}")
+        print(f"💻 {'Command:':>11} {cmd}")
     else:
-        print(f"❌ Unknown response type: {resp_type}")
+        print(f"❌ {'Response:':>1} Unknown response type: {resp_type}")
     return cmd
 
 

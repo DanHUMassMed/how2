@@ -24,6 +24,7 @@ The `how2` assistant is composed of three main components:
 
 ## Installation
 
+`how2` was written and tested on macOS *Windows dependencies are not addressed*
 You can install `how2` using `pip`:
 
 ```bash
@@ -61,6 +62,18 @@ The generated command will be printed to the console and copied to your clipboar
 -   **Set LLM Model**: To set the Ollama model you want to use, run:
     ```bash
     how2 --set-llm <model_name>
+    ```
+-   **Set LLM Temperature**: To set the LLM temperature, run:
+    ```bash
+    how2 --set-temperature <temperature_value>
+    ```
+-   **Set LLM Timeout**: To set the LLM timeout in seconds, run:
+    ```bash
+    how2 --set-timeout <timeout_in_seconds>
+    ```
+-   **Set Ollama Host**: To set the Ollama host URL, run:
+    ```bash
+    how2 --set-host <host_url>
     ```
 -   **Show Environment**: To see the current environment setup that `how2` is using, run:
     ```bash

@@ -3,15 +3,16 @@ import os
 from pathlib import Path
 import time
 from typing import Any, Dict
-
+import how.constants as const
 
 class ConfigManager:
     DEFAULT_CONFIG = {
-        "model_name": "gpt-oss:20b-cloud",
-        "ollama_host": "http://127.0.0.1:11434",
-        "temperature": 0.3,
-        "timeout": 50,
-        "log_level": "INFO",
+        "model_name": const.MODEL_NAME,
+        "ollama_host": const.OLLAMA_HOST,
+        "temperature": const.TEMPERATURE,
+        "timeout": const.TIMEOUT,
+        "log_level": const.LOG_LEVEL,
+        "startup_check": const.STARTUP_CHECK
     }
 
     MAX_HISTORY = 1000
@@ -98,6 +99,7 @@ class ConfigManager:
     def log_history(self, question: str, command: str) -> None:
         """Append question and command to log file, keeping max history entries."""
         self._ensure_history_exists()
+        command = command.replace('\n', ';')
         entry = f"Q: {question.strip()}\n\t{command.strip()}\n"
 
         # Read all entries, enforce cap
