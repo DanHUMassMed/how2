@@ -2,6 +2,9 @@
 
 `how2` is a command-line tool that acts as your personal shell assistant. Powered by Large Language Models (LLMs), it translates your natural language questions into executable shell commands.
 
+## How Fork/Rewrite
+`how2` is forked from [https://github.com/Ademking/how](https://github.com/Ademking/how) and rewritten to use Ollama.
+
 ## Features
 
 -   **Natural Language to Shell Commands**: Ask questions in plain English and get back the shell command you need.
