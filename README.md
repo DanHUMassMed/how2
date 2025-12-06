@@ -117,7 +117,7 @@ mlflow ui
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a pull request or open an issue on the project's GitHub repository.
+This a simple personal project not under active development, but contributions are welcome. Please feel free to submit a pull request or fork the code for your own use.
 
 ## License
 
