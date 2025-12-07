@@ -24,7 +24,7 @@ sed -i '' "s/__version__ = .*/__version__ = \"$NEW_VERSION\"/" pyproject.toml
 
 rm -rf ./dist
 rm -rf ./how2.egg-info
-python setup.py sdist
+uv build
 
 # Run twine check and capture the output
 CHECK_OUTPUT=$(twine check dist/*)
