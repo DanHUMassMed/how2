@@ -1,3 +1,25 @@
-[build-system]
-requires = ["setuptools>=42", "wheel"]
-build-backend = "setuptools.build_meta"
+[project]
+name = "how2"
+version = "0.1.0"
+description = "A simple, command-line tool to translate plain English into shell commands."
+readme = "README.md"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [
+{name = "Dan Higgins", email = "daniel.higgins@gatech.edu"}
+]
+dependencies = [
+    "psutil==7.1.3",
+    "build>=1.3.0",
+    "ollama>=0.6.1",
+    "pyperclip>=1.11.0",
+    "twine>=6.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/DanHUMassMed/how2.git"
+
+[project.scripts]
+how2 = "how2.cli:main"
+
+

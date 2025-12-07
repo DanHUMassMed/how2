@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION_FILE="src/how/__init__.py" 
+VERSION_FILE="how2/__init__.py" 
 
 # Get current version
 VERSION=$(grep "__version__" $VERSION_FILE | cut -d'"' -f2)
@@ -17,13 +17,13 @@ echo "Bumping version: $VERSION → $NEW_VERSION"
 
 # Update __init__.py
 sed -i '' "s/__version__ = .*/__version__ = \"$NEW_VERSION\"/" $VERSION_FILE
-sed -i '' "s/__version__ = .*/__version__ = \"$NEW_VERSION\"/" setup.py
+sed -i '' "s/__version__ = .*/__version__ = \"$NEW_VERSION\"/" pyproject.toml
 
 # Build distribution
 
 
 rm -rf ./dist
-rm -rf ./how.egg-info
+rm -rf ./how2.egg-info
 python setup.py sdist
 
 # Run twine check and capture the output

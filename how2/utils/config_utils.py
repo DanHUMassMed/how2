@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 import time
 from typing import Any, Dict
-import how.constants as const
+import how2.constants as const
 
 class ConfigManager:
     DEFAULT_CONFIG = {

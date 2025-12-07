@@ -1,5 +1,5 @@
 
-from how.cli import main
+from how2.cli import main
 
 if __name__ == "__main__":
     main()

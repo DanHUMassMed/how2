@@ -1,10 +1,10 @@
 import argparse
 import sys
-from how.how_agent import agent
-from how.utils.os_utils import copy_to_clipboard
-from how.utils.config_utils import config
-from how.utils.ollama_utils import check_ollama_is_running,check_ollama_has_model
-import how.constants as const
+from how2.how_agent import agent
+from how2.utils.os_utils import copy_to_clipboard
+from how2.utils.config_utils import config
+from how2.utils.ollama_utils import check_ollama_is_running,check_ollama_has_model
+import how2.constants as const
 
 class FriendlyArgumentParser(argparse.ArgumentParser):
     def error(self, message):

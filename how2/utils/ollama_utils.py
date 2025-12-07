@@ -7,7 +7,7 @@ import platform
 import inspect
 import os
 import psutil
-import how.constants as const
+import how2.constants as const
 import logging
 
 logger = logging.getLogger(__name__)

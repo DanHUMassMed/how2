@@ -7,10 +7,10 @@ import traceback
 from typing import Optional
 import ollama
 from pathlib import Path
-from how.utils.os_utils import get_git_repo, list_available_tools, Spinner, list_files
-from how.utils.config_utils import config
+from how2.utils.os_utils import get_git_repo, list_available_tools, Spinner, list_files
+from how2.utils.config_utils import config
 import logging
-import how.constants as const
+import how2.constants as const
 
 logger = logging.getLogger(__name__)
 
